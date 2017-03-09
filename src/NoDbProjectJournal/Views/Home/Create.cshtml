@@ -1,0 +1,16 @@
+﻿@using NoDbProjectJournal.Models;
+@model JournalEntry
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.TextAreaFor(model => model.Content, new { @class = "form-control", style = "max-width: 2000px;", rows = "3" })
+        @Html.ValidationMessageFor(model => model.Content)
+    </div>
+
+    @Html.ValidationSummary()
+
+    <input type="submit" value="Save" class="btn btn-default" style="width: 100px;" />
+}
